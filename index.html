@@ -1,1 +1,1424 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#050814" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="index,follow" />
 
+  <title>Puweb — Product-grade landing pages that turn traffic into booked calls</title>
+  <meta name="description" content="A 7-day landing page sprint: offer clarity + premium design + performance + tracking + booking flow. Built to convert." />
+
+  <!-- Canonical + Icons (replace YOURDOMAIN) -->
+  <link rel="canonical" href="https://YOURDOMAIN.com/" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph / Twitter (replace YOURDOMAIN + og.png) -->
+  <meta property="og:title" content="Puweb — Product-grade landing pages that turn traffic into booked calls" />
+  <meta property="og:description" content="A 7-day landing page sprint: offer clarity + premium design + performance + tracking + booking flow. Built to convert." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOURDOMAIN.com/" />
+  <meta property="og:image" content="https://YOURDOMAIN.com/og.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Puweb — Product-grade landing pages that turn traffic into booked calls" />
+  <meta name="twitter:description" content="A 7-day landing page sprint: offer clarity + premium design + performance + tracking + booking flow." />
+  <meta name="twitter:image" content="https://YOURDOMAIN.com/og.png" />
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD (Agency) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Puweb Agency",
+    "url": "https://YOURDOMAIN.com/",
+    "email": "amuracouture@gmail.com",
+    "logo": "https://YOURDOMAIN.com/logo.png",
+    "sameAs": [],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "amuracouture@gmail.com"
+    }]
+  }
+  </script>
+
+  <style>
+    /* --------------------
+      Base / Reset
+    -------------------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:#070b1a;
+      color:rgba(255,255,255,.92);
+      overflow-x:hidden;
+    }
+    a{ color:inherit; }
+    img{ max-width:100%; height:auto; display:block; }
+    :focus-visible{
+      outline: 2px solid rgba(100,140,255,.95);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    /* --------------------
+      Tokens
+    -------------------- */
+    :root{
+      --bg0:#050814;
+      --bg1:#070b1a;
+      --glass: rgba(255,255,255,0.06);
+      --glass2: rgba(0,0,0,0.24);
+      --border: rgba(255,255,255,0.14);
+      --border2: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.74);
+      --muted2: rgba(255,255,255,0.62);
+      --accent:#4169E1;
+      --accent2:#648cff;
+      --shadow: 0 28px 70px rgba(0,0,0,.55);
+      --shadow2: 0 18px 45px rgba(0,0,0,0.25);
+      --radius: 32px;
+
+      /* reserve space for fixed top island */
+      --island-h: 58px;
+      --island-gap: 20px;
+    }
+
+    /* --------------------
+      Background
+    -------------------- */
+    .bg{
+      min-height:100vh;
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(65,105,225,.30), transparent 60%),
+        radial-gradient(900px 650px at 85% 25%, rgba(30,64,175,.22), transparent 60%),
+        radial-gradient(650px 450px at 40% 110%, rgba(100,140,255,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
+
+    /* --------------------
+      Layout
+    -------------------- */
+    .wrap{
+      max-width: 1120px;
+      margin:0 auto;
+      padding: calc(28px + var(--island-h) + var(--island-gap) + env(safe-area-inset-top)) 16px 72px;
+    }
+
+    .heroCard{
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      position:relative;
+    }
+
+    /* subtle shine */
+    .heroCard::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(700px 280px at 25% 10%, rgba(255,255,255,.12), transparent 55%),
+        radial-gradient(600px 240px at 85% 0%, rgba(255,255,255,.10), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.06), transparent 35%);
+      pointer-events:none;
+      opacity:.7;
+    }
+
+    .hero{
+      position:relative;
+      padding: clamp(28px, 4.2vw, 52px);
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(65,105,225,.38);
+      background: rgba(65,105,225,.12);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+    }
+    .kickerDot{
+      width:8px;height:8px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(65,105,225,.16);
+    }
+
+    h1{
+      font-size: clamp(34px, 5.2vw, 62px);
+      margin: 16px 0 12px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .lead{
+      margin:0 0 18px;
+      max-width: 74ch;
+      font-size: 16px;
+      line-height: 1.78;
+      color: rgba(255,255,255,0.78);
+      font-weight: 650;
+    }
+
+    .micro{
+      margin: 10px 0 0;
+      color: rgba(255,255,255,0.62);
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 16px;
+      text-decoration:none;
+      font-weight: 950;
+      white-space:nowrap;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.26);
+      color: rgba(255,255,255,0.92);
+      transition: transform .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease;
+      cursor:pointer;
+      appearance:none;
+      -webkit-appearance:none;
+      font: inherit;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(0,0,0,0.36);
+      border-color: rgba(65,105,225,0.38);
+      box-shadow: 0 18px 42px rgba(0,0,0,.22);
+    }
+
+    .btnPrimary{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #061028;
+      border-color: rgba(65,105,225,0.48);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 18px 45px rgba(0,0,0,0.30);
+    }
+
+    .btnGhost{
+      background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06));
+      border-color: rgba(255,255,255,0.18);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+    }
+
+    .pillRow{
+      margin-top: 16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .pill{
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.90);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(65,105,225,.30);
+      background: rgba(65,105,225,.10);
+    }
+    .pill.neutral{
+      border-color: rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+    }
+
+    .heroSplit{
+      margin-top: 22px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .panel{
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: var(--shadow2);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background: radial-gradient(600px 200px at 20% 0%, rgba(100,140,255,.18), transparent 55%);
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    .panel > * { position:relative; }
+
+    .panel h2{
+      margin:0 0 8px;
+      font-size: 14px;
+      font-weight: 950;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+    }
+    .panel p{
+      margin:0;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      font-weight: 650;
+      font-size: 13.5px;
+    }
+
+    .list{
+      margin: 12px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap: 10px;
+    }
+    .li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.05);
+    }
+    .tick{
+      width: 18px; height: 18px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 26px rgba(65,105,225,.25);
+      flex: 0 0 auto;
+      display:grid;
+      place-items:center;
+      color:#061028;
+      font-weight: 1000;
+      font-size: 12px;
+      line-height:1;
+      margin-top: 2px;
+    }
+
+    .stats{
+      display:grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .stat{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.18);
+    }
+    .stat strong{
+      font-size: 18px;
+      font-weight: 1000;
+      letter-spacing: -0.02em;
+    }
+    .stat span{
+      color: rgba(255,255,255,0.70);
+      font-size: 12.5px;
+      font-weight: 750;
+    }
+
+    /* --------------------
+      Sections
+    -------------------- */
+    .sections{ margin-top: 18px; }
+    .section{
+      margin-top: 16px;
+      padding: clamp(22px, 3vw, 34px);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      box-shadow: var(--shadow2);
+      position: relative;
+      overflow:hidden;
+    }
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(800px 240px at 18% 0%, rgba(65,105,225,.18), transparent 58%),
+        radial-gradient(600px 220px at 88% 10%, rgba(100,140,255,.14), transparent 60%);
+      opacity:.55;
+      pointer-events:none;
+    }
+    .section > * { position:relative; }
+
+    .section h2{
+      margin:0 0 10px;
+      font-size: 22px;
+      font-weight: 1000;
+      letter-spacing: -0.02em;
+    }
+    .section p{
+      margin:0;
+      color: rgba(255,255,255,0.76);
+      line-height: 1.8;
+      font-weight: 650;
+      max-width: 80ch;
+    }
+
+    .grid3{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .card{
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 22px;
+      padding: 16px;
+      transition: transform .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease;
+      box-shadow: 0 16px 44px rgba(0,0,0,0.18);
+      position: relative;
+      overflow:hidden;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      background: rgba(0,0,0,.34);
+      border-color: rgba(65,105,225,0.35);
+      box-shadow: 0 22px 60px rgba(0,0,0,0.26);
+    }
+    .card h3{
+      margin:0 0 6px;
+      font-size: 15px;
+      font-weight: 1000;
+      letter-spacing: -0.01em;
+    }
+    .card p{
+      margin:0;
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.72);
+      font-weight: 650;
+    }
+
+    .tagRow{ margin-top: 12px; display:flex; flex-wrap:wrap; gap: 8px; }
+    .tag{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .workGrid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .workShot{
+      height: 170px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        radial-gradient(400px 160px at 30% 20%, rgba(100,140,255,.22), transparent 60%),
+        radial-gradient(380px 150px at 80% 20%, rgba(65,105,225,.18), transparent 60%),
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(0,0,0,0.22));
+      margin-bottom: 12px;
+      position: relative;
+      overflow:hidden;
+    }
+    .workShot::after{
+      content:"Screenshot / Before → After";
+      position:absolute;
+      inset:auto 12px 12px 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      width: fit-content;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .quote{ display:flex; flex-direction:column; gap: 10px; }
+    .quote blockquote{
+      margin:0;
+      padding: 14px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.22);
+      color: rgba(255,255,255,0.80);
+      line-height: 1.8;
+      font-weight: 650;
+    }
+    .quote .who{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      color: rgba(255,255,255,0.70);
+      font-size: 12.5px;
+      font-weight: 800;
+    }
+
+    .faq{ margin-top: 14px; display:grid; gap: 10px; }
+    details{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.22);
+      overflow:hidden;
+    }
+    summary{
+      cursor:pointer;
+      padding: 14px 14px;
+      font-weight: 950;
+      color: rgba(255,255,255,0.86);
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display:none; }
+    details p{
+      padding: 0 14px 14px;
+      color: rgba(255,255,255,0.72);
+      font-weight: 650;
+      margin:0;
+    }
+
+    /* --------------------
+      Footer
+    -------------------- */
+    .footer{
+      margin-top: 18px;
+      padding: 18px;
+      text-align:center;
+      color: rgba(255,255,255,0.62);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* --------------------
+      Dynamic Island Nav
+    -------------------- */
+    .islandWrap{
+      position:fixed;
+      inset: calc(16px + env(safe-area-inset-top)) 0 auto;
+      display:grid;
+      place-items:center;
+      z-index: 999;
+      pointer-events:none;
+    }
+
+    .island{
+      pointer-events:auto;
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 22px 65px rgba(0,0,0,0.65);
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      transition:
+        transform 420ms cubic-bezier(.2,.9,.2,1),
+        opacity 260ms ease,
+        border-color 260ms ease,
+        background 260ms ease;
+      will-change: transform, opacity;
+    }
+
+    .island[data-state="hidden"]{
+      opacity:0;
+      transform: translateY(-14px) scale(0.98);
+      pointer-events:none;
+    }
+
+    .island[data-state="compact"]{
+      transform: translateY(0) scale(0.985);
+      background: rgba(0,0,0,0.46);
+      border-color: rgba(65,105,225,0.25);
+    }
+
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      text-decoration:none;
+      font-weight: 1000;
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background .16s ease;
+      letter-spacing: -0.01em;
+    }
+    .brand:hover{ background: rgba(255,255,255,0.06); }
+
+    .divider{
+      font-weight: 1000;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin: 0 2px;
+    }
+
+    .navLinks{ display:flex; align-items:center; gap: 6px; }
+    .navLinks a{
+      text-decoration:none;
+      font-weight: 900;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.80);
+      padding: 9px 10px;
+      border-radius: 999px;
+      transition: background .16s ease, color .16s ease;
+    }
+    .navLinks a:hover{ background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.96); }
+
+    .navCta{
+      position:relative;
+      text-decoration:none;
+      font-weight: 1000;
+      font-size: 12.5px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,255,255,0.25);
+      background: linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08));
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 12px 30px rgba(0,0,0,0.45);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      white-space: nowrap;
+    }
+    .navCta:hover{
+      transform: translateY(-1px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), 0 18px 45px rgba(0,0,0,0.55);
+      background: linear-gradient(135deg, rgba(255,255,255,0.45), rgba(255,255,255,0.12));
+    }
+
+    /* --------------------
+      Sticky bottom CTA (mobile)
+    -------------------- */
+    .stickyCta{
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: calc(12px + env(safe-area-inset-bottom));
+      z-index: 1100;
+      display:none;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.52);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      box-shadow: 0 22px 65px rgba(0,0,0,0.55);
+    }
+    .stickyCta a, .stickyCta button{ flex: 1; }
+    .stickyCta .btn{ width:100%; border-radius: 16px; padding: 12px 14px; }
+    .stickyCta .btnGhost{ border-color: rgba(255,255,255,0.18); }
+
+    /* --------------------
+      Cookie Toast (with TTL)
+    -------------------- */
+    .cookieToast{
+      position: fixed;
+      left: 18px;
+      bottom: calc(18px + env(safe-area-inset-bottom));
+      width: min(420px, calc(100% - 36px));
+      z-index: 1200;
+      opacity: 0;
+      transform: translateY(10px) scale(0.98);
+      pointer-events: none;
+      transition: opacity 220ms ease, transform 280ms cubic-bezier(.2,.9,.2,1);
+    }
+    .cookieToast[data-open="true"]{
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .cookieCard{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(18, 20, 28, 0.72);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+    .cookieTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+    }
+    .cookieApp{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 1000;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.88);
+      letter-spacing: 0.02em;
+    }
+    .cookieBody{ padding: 14px; }
+    .cookieTitle{
+      margin:0 0 6px;
+      font-size: 14px;
+      font-weight: 1000;
+      color: rgba(255,255,255,0.92);
+    }
+    .cookieText{
+      margin:0;
+      font-size: 12.8px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.70);
+      font-weight: 650;
+    }
+    .cookieActions{ display:flex; gap: 10px; padding: 12px 14px 14px; }
+    .cookieBtn{
+      appearance:none;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.90);
+      font-weight: 1000;
+      font-size: 12.5px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor:pointer;
+      transition: transform .14s ease, background .14s ease, border-color .14s ease;
+      flex:1;
+    }
+    .cookieBtn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.22);
+    }
+    .cookieBtnPrimary{
+      background: linear-gradient(135deg, rgba(65,105,225,0.95), rgba(100,140,255,0.92));
+      color: #061028;
+      border-color: rgba(65,105,225,0.55);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+
+    /* Skip link (a11y) */
+    .skipLink{
+      position:absolute;
+      left: 14px;
+      top: calc(14px + env(safe-area-inset-top));
+      transform: translateY(-220%);
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.65);
+      color: rgba(255,255,255,0.92);
+      font-weight: 950;
+      text-decoration:none;
+      z-index: 2000;
+    }
+    .skipLink:focus{ transform: translateY(0); }
+
+    /* Dialog (teardown preview) */
+    dialog.dialog{ border: none; padding: 0; background: transparent; width: min(720px, calc(100% - 28px)); }
+    dialog.dialog::backdrop{ background: rgba(0,0,0,0.62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .dialogCard{ border-radius: 22px; border: 1px solid rgba(255,255,255,0.16); background: rgba(18, 20, 28, 0.78); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); box-shadow: 0 28px 90px rgba(0,0,0,0.70); overflow:hidden; }
+    .dialogTop{ display:flex; align-items:center; justify-content:space-between; gap: 12px; padding: 14px 14px; border-bottom: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.04); }
+    .dialogTop strong{ font-size: 12.5px; font-weight: 1000; letter-spacing: .10em; text-transform: uppercase; color: rgba(255,255,255,0.90); }
+    .dialogClose{ border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.92); font-weight: 950; font-size: 12.5px; padding: 9px 12px; border-radius: 12px; cursor:pointer; }
+    .dialogClose:hover{ background: rgba(255,255,255,0.10); }
+    .dialogBody{ padding: 16px 14px 16px; }
+    .dialogBody p{ margin:0 0 10px; color: rgba(255,255,255,0.76); line-height: 1.75; font-weight: 650; }
+    .dialogList{ margin: 10px 0 0; padding:0; list-style:none; display:grid; gap: 10px; }
+
+    /* --------------------
+      Responsive
+    -------------------- */
+    @media (max-width: 980px){
+      .heroSplit{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .workGrid{ grid-template-columns: 1fr; }
+      .stickyCta{ display: grid; }
+      .navLinks{ display:none; }
+      .divider.hideMobile{ display:none; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .island, .btn, .card, .cookieToast { transition:none !important; }
+      html:focus-within{ scroll-behavior:auto; }
+    }
+    @media (prefers-reduced-motion: no-preference){
+      html{ scroll-behavior:smooth; }
+    }
+
+    /* Visually hidden utility */
+    .srOnly{
+      position:absolute; width:1px; height:1px;
+      padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0);
+      white-space:nowrap; border:0;
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skipLink" href="#top">Skip to content</a>
+
+  <div class="bg">
+    <!-- Dynamic Island Nav -->
+    <div class="islandWrap">
+      <div class="island" id="island" data-state="shown" role="navigation" aria-label="Primary">
+        <a class="brand" href="#top" aria-label="Puweb Agency home">Puweb Agency</a>
+
+        <span class="divider hideMobile" aria-hidden="true">|</span>
+
+        <nav class="navLinks" aria-label="Sections">
+          <a href="#services">Services</a>
+          <a href="#leaks">Leaks</a>
+          <a href="#work">Work</a>
+          <a href="#process">Process</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <span class="divider hideMobile" aria-hidden="true">|</span>
+
+        <!-- IMPORTANT: Replace BOOKING_URL below in the script -->
+        <a class="navCta" id="navBook" href="#contact" data-track="cta_nav_book">Book a 15-min teardown</a>
+      </div>
+    </div>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="stickyCta" id="stickyCta" aria-label="Quick actions">
+      <a class="btn btnPrimary" id="stickyBook" href="#contact" data-track="cta_sticky_book">Book teardown</a>
+      <button class="btn btnGhost" id="stickyPreview" type="button" data-track="cta_sticky_preview">See what you get</button>
+    </div>
+
+    <!-- Cookie notification -->
+    <div class="cookieToast" id="cookieToast" data-open="false" role="dialog" aria-label="Cookie preferences" aria-modal="false">
+      <div class="cookieCard">
+        <div class="cookieTop">
+          <div class="cookieApp">Puweb Agency</div>
+        </div>
+        <div class="cookieBody">
+          <p class="cookieTitle">Cookies &amp; analytics</p>
+          <p class="cookieText">We use analytics cookies to learn what converts and improve your experience. You can allow analytics or continue without.</p>
+          <p class="cookieText" style="margin-top:10px; opacity:.85;">
+            <a href="/privacy.html" style="text-decoration:none; border-bottom:1px solid rgba(255,255,255,.18);">Privacy</a>
+            <span aria-hidden="true" style="opacity:.45;"> • </span>
+            <a href="/terms.html" style="text-decoration:none; border-bottom:1px solid rgba(255,255,255,.18);">Terms</a>
+          </p>
+        </div>
+        <div class="cookieActions">
+          <button class="cookieBtn" id="cookieDecline" type="button">Not now</button>
+          <button class="cookieBtn cookieBtnPrimary" id="cookieAllow" type="button">Allow</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap" id="top">
+      <noscript>
+        <div class="section" style="margin-top:0;">
+          <h2>JavaScript is off</h2>
+          <p>This page still works. Booking buttons open your link, and you can email us from the contact section.</p>
+        </div>
+      </noscript>
+
+      <main class="heroCard" id="home">
+        <section class="hero" aria-label="Hero">
+          <div class="kicker"><span class="kickerDot"></span> Conversion engineering for booked calls</div>
+
+          <h1>Turn traffic into booked calls — with a product-grade landing page shipped in 7 days.</h1>
+
+          <p class="lead">
+            Puweb designs and builds conversion-first pages with <strong>offer clarity, proof, tracking, and a frictionless booking flow</strong>.
+            Clean like a product launch. Measurable like a funnel.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn btnPrimary" id="heroBook" href="#contact" data-track="cta_hero_book">Book a 15-min teardown</a>
+            <button class="btn btnGhost" id="heroPreview" type="button" data-track="cta_hero_preview">See what you get</button>
+          </div>
+
+          <p class="micro">
+            In 15 minutes you’ll leave with: <strong>the #1 conversion leak</strong>, <strong>3 quick wins</strong>, and a <strong>7-day sprint plan</strong>.
+          </p>
+
+          <div class="pillRow" aria-label="Highlights">
+            <span class="pill">Copy + design + dev</span>
+            <span class="pill">Tracking by default</span>
+            <span class="pill">Booking flow</span>
+            <span class="pill neutral">Performance targets</span>
+            <span class="pill neutral">Launch-ready</span>
+          </div>
+
+          <div class="heroSplit" aria-label="What you get and scorecard">
+            <div class="panel">
+              <h2>What ships in the sprint</h2>
+              <ul class="list">
+                <li class="li"><span class="tick">✓</span><span><strong>Conversion structure</strong><br><span style="color:rgba(255,255,255,.70);font-weight:650">Hero + offer + proof + objections + CTA flow built to convert.</span></span></li>
+                <li class="li"><span class="tick">✓</span><span><strong>Premium design</strong><br><span style="color:rgba(255,255,255,.70);font-weight:650">Modern UI, clean hierarchy, mobile-first, crisp typography.</span></span></li>
+                <li class="li"><span class="tick">✓</span><span><strong>Speed + SEO basics</strong><br><span style="color:rgba(255,255,255,.70);font-weight:650">Optimized assets, meta tags, semantic sections, Core Web Vitals focus.</span></span></li>
+                <li class="li"><span class="tick">✓</span><span><strong>Tracking + booking</strong><br><span style="color:rgba(255,255,255,.70);font-weight:650">Analytics events + Calendly/WhatsApp/form ready to book.</span></span></li>
+              </ul>
+            </div>
+
+            <div class="panel">
+              <h2>Teardown scorecard</h2>
+              <p>
+                We grade your page on clarity, trust, speed, tracking, and booking friction — then hand you a short fix list.
+                No fluff. No “maybe”. Just the leverage points.
+              </p>
+
+              <ul class="list" aria-label="Scorecard">
+                <li class="li"><span class="tick">✓</span><span><strong>Offer clarity</strong><br><span style="color:rgba(255,255,255,.70);font-weight:650">Who it’s for, what it does, why they should care — in 5 seconds.</span></span></li>
+                <li class="li"><span class="tick">✓</span><span><strong>Trust &amp; proof</strong><br><span style="color:rgba(255,255,255,.70);font-weight:650">Case studies, credible specifics, objection handling, and risk reversal.</span></span></li>
+                <li class="li"><span class="tick">✓</span><span><strong>Frictionless booking</strong><br><span style="color:rgba(255,255,255,.70);font-weight:650">Fewer clicks, fewer fields, clearer next step. More completions.</span></span></li>
+              </ul>
+
+              <div class="stats" aria-label="Targets">
+                <div class="stat"><strong data-count="90">0</strong><span>Lighthouse target</span></div>
+                <div class="stat"><strong data-count="7">0</strong><span>day sprint</span></div>
+                <div class="stat"><strong data-count="1.2">0</strong><span>s load target</span></div>
+              </div>
+
+              <div class="ctaRow" style="margin-top:12px;">
+                <a class="btn" href="#leaks" data-track="cta_hero_leaks">See the leaks</a>
+                <a class="btn" href="#faq" data-track="cta_hero_faq">Common questions</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="sections">
+        <!-- Leaks / Hook (why people don’t book) -->
+        <section class="section" id="leaks">
+          <h2>Most sites don’t have a traffic problem — they have a conversion leak.</h2>
+          <p>
+            If you’re getting visits but not booked calls, it’s usually one of these.
+            Fix the leak, and the same traffic starts producing.
+          </p>
+
+          <div class="grid3" role="list">
+            <div class="card" role="listitem">
+              <h3>Leak #1: The offer isn’t instantly obvious</h3>
+              <p>People can’t explain what you do in one sentence → they bounce. We rewrite the promise + structure.</p>
+              <div class="tagRow"><span class="tag">Clarity</span><span class="tag">Positioning</span><span class="tag">Message</span></div>
+            </div>
+            <div class="card" role="listitem">
+              <h3>Leak #2: Proof is weak or generic</h3>
+              <p>“Premium modern” doesn’t sell. Specific outcomes do. We build proof blocks that reduce doubt.</p>
+              <div class="tagRow"><span class="tag">Case studies</span><span class="tag">Objections</span><span class="tag">Trust</span></div>
+            </div>
+            <div class="card" role="listitem">
+              <h3>Leak #3: Booking flow has friction</h3>
+              <p>If the next step feels hard, people delay. We simplify the path and track every drop-off.</p>
+              <div class="tagRow"><span class="tag">Booking</span><span class="tag">Tracking</span><span class="tag">Funnel</span></div>
+            </div>
+          </div>
+
+          <div class="ctaRow" style="margin-top:14px;">
+            <a class="btn btnPrimary" href="#contact" data-track="cta_leaks_book">Show me my leak</a>
+            <button class="btn" id="leaksPreview" type="button" data-track="cta_leaks_preview">What happens on the call</button>
+          </div>
+
+          <p class="micro">If we can’t find 3 concrete fixes in 15 minutes, we’ll tell you that too.</p>
+        </section>
+
+        <!-- Services / Offers -->
+        <section class="section" id="services">
+          <h2>Services (outcome-first)</h2>
+          <p>
+            Pick the outcome you want. We build the system that gets you there.
+            <span style="color:rgba(255,255,255,.64)">Optional: add pricing ranges to qualify leads.</span>
+          </p>
+
+          <div class="grid3" role="list">
+            <div class="card" role="listitem">
+              <h3>Landing Page Sprint (7 days)</h3>
+              <p>Best for: traffic exists, bookings are low. We rebuild the page to convert.</p>
+              <div class="tagRow">
+                <span class="tag">Copy + UI</span>
+                <span class="tag">Tracking</span>
+                <span class="tag">Booking flow</span>
+              </div>
+            </div>
+
+            <div class="card" role="listitem">
+              <h3>Website Redesign (14–21 days)</h3>
+              <p>Best for: brand refresh + trust. We redesign key pages and ship fast.</p>
+              <div class="tagRow">
+                <span class="tag">Home + key pages</span>
+                <span class="tag">SEO basics</span>
+                <span class="tag">Performance</span>
+              </div>
+            </div>
+
+            <div class="card" role="listitem">
+              <h3>Tracking &amp; Funnel Setup (48 hours)</h3>
+              <p>Best for: you need clarity. We set up events, conversion tracking, and reporting.</p>
+              <div class="tagRow">
+                <span class="tag">Events</span>
+                <span class="tag">Attribution</span>
+                <span class="tag">Dashboards</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Work / Proof -->
+        <section class="section" id="work">
+          <h2>Work (proof that sells)</h2>
+          <p>
+            Add 3–6 case studies: screenshot + short story + result.
+            Even small wins beat “modern premium” every time.
+          </p>
+
+          <div class="workGrid">
+            <div class="card">
+              <div class="workShot" aria-hidden="true"></div>
+              <h3>Case Study #1 — Home page conversion</h3>
+              <p><strong>Result:</strong> +28% booked calls in 14 days. <span style="color:rgba(255,255,255,.68);font-weight:650">Replace with your real data.</span></p>
+              <div class="tagRow">
+                <span class="tag">New offer</span>
+                <span class="tag">Better CTA</span>
+                <span class="tag">Trust blocks</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="workShot" aria-hidden="true"></div>
+              <h3>Case Study #2 — Landing sprint</h3>
+              <p><strong>Result:</strong> 2.1× lead rate after rebuild. <span style="color:rgba(255,255,255,.68);font-weight:650">Replace with your real data.</span></p>
+              <div class="tagRow">
+                <span class="tag">Copy rewrite</span>
+                <span class="tag">Speed</span>
+                <span class="tag">Tracking</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ctaRow" style="margin-top:14px;">
+            <a class="btn btnPrimary" href="#contact" data-track="cta_work_book">Get the same for my site</a>
+            <a class="btn" href="mailto:amuracouture@gmail.com" data-track="cta_work_email">Email instead</a>
+          </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="section" id="testimonials">
+          <h2>What clients say</h2>
+          <p>Even 2 real testimonials will lift bookings. Add names + role + company if possible.</p>
+
+          <div class="grid3">
+            <div class="card quote">
+              <blockquote>“We had traffic but barely any calls. After the rebuild, bookings increased within the first week.”</blockquote>
+              <div class="who"><span>Client Name — Role</span><span>★★★★★</span></div>
+            </div>
+            <div class="card quote">
+              <blockquote>“Fast turnaround, clean design, and the tracking finally made our funnel measurable.”</blockquote>
+              <div class="who"><span>Client Name — Role</span><span>★★★★★</span></div>
+            </div>
+            <div class="card quote">
+              <blockquote>“The page feels premium and converts. The call flow is frictionless now.”</blockquote>
+              <div class="who"><span>Client Name — Role</span><span>★★★★★</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Process -->
+        <section class="section" id="process">
+          <h2>Process (remove uncertainty)</h2>
+          <p>When people know what happens next, they book more.</p>
+
+          <div class="grid3" role="list">
+            <div class="card" role="listitem">
+              <h3>1) Teardown call (15 min)</h3>
+              <p>We review your site live and identify what’s blocking conversions.</p>
+              <div class="tagRow"><span class="tag">Free</span><span class="tag">Clear next steps</span></div>
+            </div>
+            <div class="card" role="listitem">
+              <h3>2) Plan + offer</h3>
+              <p>You get a simple plan: what we’ll build, timeline, and how we measure success.</p>
+              <div class="tagRow"><span class="tag">No fluff</span><span class="tag">Outcome-based</span></div>
+            </div>
+            <div class="card" role="listitem">
+              <h3>3) Sprint + launch</h3>
+              <p>We ship fast, track results, and iterate based on real data.</p>
+              <div class="tagRow"><span class="tag">Ship</span><span class="tag">Measure</span><span class="tag">Improve</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" id="faq">
+          <h2>FAQ (handle objections)</h2>
+          <p>Answer the fear behind “booking a call”: price, time, results, trust.</p>
+
+          <div class="faq">
+            <details>
+              <summary>What do I need before we start?</summary>
+              <p>Just your current website, your target customer, and your offer. We’ll handle structure, design, and build. If you have brand assets, great — if not, we can work with what you have.</p>
+            </details>
+            <details>
+              <summary>How fast can we launch?</summary>
+              <p>Landing sprints can ship in ~7 days depending on feedback speed. Redesigns typically take 14–21 days.</p>
+            </details>
+            <details>
+              <summary>Do you guarantee results?</summary>
+              <p>No one honest guarantees exact numbers. What we do guarantee: best-practice conversion structure, performance-first build, tracking, and iteration based on data.</p>
+            </details>
+            <details>
+              <summary>What if I don’t want a call?</summary>
+              <p>Totally fine. You can email and we’ll reply with a quick teardown + recommended next step.</p>
+            </details>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section" id="contact" aria-label="Get started">
+          <h2>Book your free 15-minute teardown</h2>
+          <p>
+            This is the fastest way to fix low bookings. You’ll leave with 3 conversion changes you can apply immediately.
+            If you prefer email: <strong>amuracouture@gmail.com</strong>
+          </p>
+
+          <div class="ctaRow" style="margin-top:14px;">
+            <a class="btn btnPrimary" id="contactBook" href="#" data-track="cta_contact_book">Open booking</a>
+            <a class="btn" href="mailto:amuracouture@gmail.com?subject=Puweb%20—%20Teardown%20Request&body=Website%20URL%3A%0AWhat%20you%20sell%3A%0ATarget%20customer%3A%0AWhat%20counts%20as%20a%20conversion%3A%0A" data-track="cta_contact_email">Email teardown request</a>
+          </div>
+
+          <p class="micro">
+            Tip: replace the booking link with Calendly/TidyCal. If you want an embedded calendar, paste your link and I’ll wire the iframe cleanly.
+          </p>
+        </section>
+
+        <footer class="footer">
+          © <span id="y"></span> Puweb Agency • Built to convert • Hosted on GitHub → Vercel
+          <div style="margin-top:10px; color:rgba(255,255,255,.52); font-weight:800; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">
+            <a href="#top" style="text-decoration:none; border-bottom:1px solid rgba(255,255,255,.18);">Back to top</a>
+            <span aria-hidden="true" style="opacity:.45;">•</span>
+            <a href="/privacy.html" style="text-decoration:none; border-bottom:1px solid rgba(255,255,255,.18);">Privacy</a>
+            <span aria-hidden="true" style="opacity:.45;">•</span>
+            <a href="/terms.html" style="text-decoration:none; border-bottom:1px solid rgba(255,255,255,.18);">Terms</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teardown Preview Dialog (pro curiosity without gimmicks) -->
+  <dialog class="dialog" id="previewDialog" aria-label="Teardown preview">
+    <div class="dialogCard">
+      <div class="dialogTop">
+        <strong>Teardown preview</strong>
+        <button class="dialogClose" id="previewClose" type="button">Close</button>
+      </div>
+      <div class="dialogBody">
+        <p><strong>What you get in 15 minutes:</strong> a fast, honest diagnosis + the exact next steps we’d ship.</p>
+        <ul class="dialogList">
+          <li class="li"><span class="tick">✓</span><span><strong>Your #1 leak</strong><br><span style="color:rgba(255,255,255,.70);font-weight:650">The one thing blocking booked calls right now.</span></span></li>
+          <li class="li"><span class="tick">✓</span><span><strong>3 quick wins</strong><br><span style="color:rgba(255,255,255,.70);font-weight:650">Changes you can apply immediately (even if you don’t hire us).</span></span></li>
+          <li class="li"><span class="tick">✓</span><span><strong>7-day sprint plan</strong><br><span style="color:rgba(255,255,255,.70);font-weight:650">What we’d build, in what order, and how we’ll measure success.</span></span></li>
+        </ul>
+        <p class="micro">Prefer async? Email your URL and we’ll reply with a quick teardown + recommended next step.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (function(){
+      // =========================
+      // CONFIG (edit these)
+      // =========================
+      var BOOKING_URL = "https://calendly.com/YOUR-BOOKING-LINK"; // <- put your real booking link here
+
+      // =========================
+      // Helpers
+      // =========================
+      function qs(sel){ return document.querySelector(sel); }
+      function qsa(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+      function track(label){
+        try{ console.log("[track]", label); }catch(e){}
+        // If you wire analytics, you can also emit events here.
+        try{ if (window.gtag) window.gtag('event', label, { event_category: 'cta' }); }catch(e2){}
+      }
+
+      function setSafeLink(el, url){
+        if (!el) return;
+        el.href = url;
+        if (/^https?:\/\//i.test(url)) {
+          el.target = "_blank";
+          el.rel = "noopener noreferrer";
+        }
+      }
+
+      // =========================
+      // Wire booking links
+      // =========================
+      setSafeLink(qs("#contactBook"), BOOKING_URL);
+
+      // =========================
+      // Year
+      // =========================
+      var y = qs("#y");
+      if (y) y.textContent = String(new Date().getFullYear());
+
+      // =========================
+      // CTA tracking
+      // =========================
+      qsa("[data-track]").forEach(function(el){
+        el.addEventListener("click", function(){
+          var label = el.getAttribute("data-track") || "cta_click";
+          track(label);
+        });
+      });
+
+      // =========================
+      // Cookie consent with TTL
+      // =========================
+      var toast = qs("#cookieToast");
+      var allowBtn = qs("#cookieAllow");
+      var declineBtn = qs("#cookieDecline");
+
+      function setConsentWithTTL(value, days){
+        var exp = Date.now() + (days * 24 * 60 * 60 * 1000);
+        try{
+          localStorage.setItem("puweb_cookie_consent", JSON.stringify({ v: value, exp: exp }));
+        }catch(e){}
+      }
+
+      function getConsentValue(){
+        try{
+          var raw = localStorage.getItem("puweb_cookie_consent");
+          if (!raw) return null;
+          var payload = JSON.parse(raw);
+          if (payload.exp && Date.now() > payload.exp){
+            try{ localStorage.removeItem("puweb_cookie_consent"); }catch(e2){}
+            return null;
+          }
+          return payload.v || null;
+        }catch(e){ return null; }
+      }
+
+      function openToast(){
+        if (!toast) return;
+        toast.setAttribute("data-open","true");
+      }
+      function closeToast(){
+        if (!toast) return;
+        toast.setAttribute("data-open","false");
+      }
+
+      function enableAnalytics(){
+        // Load analytics ONLY after consent. Replace with your own provider.
+        // Example (GA4):
+        // if (window.__gaLoaded) return; window.__gaLoaded = true;
+        // var s = document.createElement('script');
+        // s.async = true;
+        // s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX';
+        // document.head.appendChild(s);
+        // window.dataLayer = window.dataLayer || [];
+        // window.gtag = function(){ window.dataLayer.push(arguments); };
+        // window.gtag('js', new Date());
+        // window.gtag('config', 'G-XXXXXXX', { anonymize_ip: true });
+      }
+
+      var consent = getConsentValue();
+      if (!consent) {
+        // show after a short delay (less annoying)
+        setTimeout(openToast, 900);
+      } else if (consent === "allow") {
+        enableAnalytics();
+      }
+
+      if (allowBtn) allowBtn.addEventListener("click", function(){
+        setConsentWithTTL("allow", 365);
+        closeToast();
+        enableAnalytics();
+        track("cookie_allow");
+      });
+
+      if (declineBtn) declineBtn.addEventListener("click", function(){
+        setConsentWithTTL("decline", 60);
+        closeToast();
+        track("cookie_decline");
+      });
+
+      // =========================
+      // Dynamic island behavior
+      // - compact after scroll
+      // - hide on scroll down, show on scroll up
+      // =========================
+      var island = qs("#island");
+      var lastY = window.scrollY || 0;
+      var ticking = false;
+
+      function stickyOnScroll(){
+        if (!island) return;
+        var y = window.scrollY || 0;
+
+        // compact state
+        if (y > 12) island.setAttribute("data-state", "compact");
+        else island.setAttribute("data-state", "shown");
+
+        // hide on scroll down, show on scroll up (after a little scroll)
+        var delta = y - lastY;
+        if (y > 180 && delta > 10) island.setAttribute("data-state", "hidden");
+        if (delta < -10) {
+          // user scrolling up
+          if (y > 120) island.setAttribute("data-state", "compact");
+          else island.setAttribute("data-state", "shown");
+        }
+
+        lastY = y;
+        ticking = false;
+      }
+
+      window.addEventListener("scroll", function(){
+        if (!ticking){
+          ticking = true;
+          window.requestAnimationFrame(stickyOnScroll);
+        }
+      }, { passive: true });
+
+      stickyOnScroll();
+
+      // =========================
+      // Mobile sticky CTA: show after hero
+      // =========================
+      var sticky = qs("#stickyCta");
+      var hero = qs("#home");
+      function updateSticky(){
+        if (!sticky || !hero) return;
+        var rect = hero.getBoundingClientRect();
+        // when hero is mostly out of view => show sticky
+        var show = rect.bottom < 120;
+        sticky.style.display = show ? "grid" : "none";
+      }
+      window.addEventListener("scroll", function(){
+        window.requestAnimationFrame(updateSticky);
+      }, { passive: true });
+      updateSticky();
+
+      // sticky preview opens dialog too
+      var stickyPreview = qs("#stickyPreview");
+      if (stickyPreview) stickyPreview.addEventListener("click", function(){
+        var dlg = qs("#previewDialog");
+        if (dlg && typeof dlg.showModal === "function") dlg.showModal();
+        track("cta_sticky_preview");
+      });
+
+      // =========================
+      // Count-up animation for targets
+      // =========================
+      function animateCount(el){
+        var target = parseFloat(el.getAttribute("data-count") || "0");
+        var isFloat = String(target).indexOf(".") >= 0;
+        var start = 0;
+        var dur = 900;
+        var t0 = performance.now();
+
+        function step(t){
+          var p = Math.min(1, (t - t0) / dur);
+          var v = start + (target - start) * (1 - Math.pow(1 - p, 3)); // easeOutCubic
+          el.textContent = isFloat ? v.toFixed(1) : Math.round(v).toString();
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      var counted = false;
+      function maybeCount(){
+        if (counted) return;
+        var stats = qsa(".stat strong[data-count]");
+        if (!stats.length) return;
+
+        // trigger when stats are visible
+        var anyVisible = stats.some(function(s){
+          var r = s.getBoundingClientRect();
+          return r.top < (window.innerHeight * 0.85);
+        });
+        if (anyVisible){
+          counted = true;
+          stats.forEach(animateCount);
+        }
+      }
+      window.addEventListener("scroll", function(){ requestAnimationFrame(maybeCount); }, { passive:true });
+      maybeCount();
+
+      // =========================
+      // Teardown preview dialog wiring
+      // =========================
+      var dlg = qs("#previewDialog");
+      var openA = qs("#heroPreview");
+      var openB = qs("#leaksPreview");
+      var closeBtn = qs("#previewClose");
+
+      function openDialog(){
+        if (!dlg) return;
+        try{
+          if (typeof dlg.showModal === "function") dlg.showModal();
+          else dlg.setAttribute("open", "");
+          track("open_teardown_preview");
+        }catch(e){}
+      }
+      function closeDialog(){
+        if (!dlg) return;
+        try{ dlg.close(); }catch(e){ try{ dlg.removeAttribute("open"); }catch(e2){} }
+      }
+
+      if (openA) openA.addEventListener("click", openDialog);
+      if (openB) openB.addEventListener("click", openDialog);
+      if (closeBtn) closeBtn.addEventListener("click", closeDialog);
+      if (dlg) dlg.addEventListener("click", function(e){ if (e.target === dlg) closeDialog(); });
+
+    })();
+  </script>
+</body>
+</html>
